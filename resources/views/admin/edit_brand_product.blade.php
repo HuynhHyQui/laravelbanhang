@@ -19,17 +19,10 @@
                             <label for="exampleInputPassword1">Brand Description</label>
                             <textarea style="resize: none;" rows="8" class="form-control" name="brand_product_desc" id="exampleInputPassword1">{{$edit_value->brand_desc}}</textarea>
                         </div>
-                        <button type="submit" name="update_brand_product" class="btn btn-info">Update</button>
+                        <button type="submit" onclick="return alert('Updated successfully')" name="update_brand_product" class="btn btn-info">Update</button>
                     </form>
                 </div>
                 @endforeach
-                <?php
-                $message = session()->get('message');
-                if ($message) {
-                    echo '<span class = "text-alert">' . $message . '</span>';
-                    session()->put('message', null);
-                }
-                ?>
             </div>
         </section>
 

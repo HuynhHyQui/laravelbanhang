@@ -12,11 +12,11 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Brand Name</label>
-                            <input type="text" name="brand_product_name" class="form-control" id="exampleInputEmail1" placeholder="Enter category name">
+                            <input type="text" name="brand_product_name" class="form-control" id="exampleInputEmail1" required="">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Brand Description</label>
-                            <textarea style="resize: none;" rows="8" class="form-control" name="brand_product_desc" id="exampleInputPassword1" placeholder="Enter"></textarea>
+                            <textarea style="resize: none;" rows="8" class="form-control" name="brand_product_desc" id="exampleInputPassword1" required=""></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Display</label>
@@ -25,16 +25,9 @@
                                 <option value="1">Hide</option>
                             </select>
                         </div>
-                        <button type="submit" name="add_brand_product" class="btn btn-info">Add</button>
+                        <button type="submit" name="add_brand_product" class="btn btn-info" onclick="return alert('Added successfully')">Add</button>
                     </form>
                 </div>
-                <?php
-                $message = session()->get('message');
-                if ($message) {
-                    echo '<span class = "text-alert">' . $message . '</span>';
-                    session()->put('message', null);
-                }
-                ?>
             </div>
         </section>
 

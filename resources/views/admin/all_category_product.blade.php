@@ -27,22 +27,9 @@
             </div>
         </div>
         <div class="table-responsive">
-            <?php
-            $message = session()->get('message');
-            if ($message) {
-                echo '<span class = "text-alert">' . $message . '</span>';
-                session()->put('message', null);
-            }
-            ?>
             <table class="table table-striped b-t b-light">
                 <thead>
                     <tr>
-                        <th style="width:20px;">
-                            <label class="i-checks m-b-none">
-                                <input type="checkbox"><i></i>
-                            </label>
-                        </th>
-                        <th>Category ID</th>
                         <th>Category Name</th>
                         <th>Display</th>
                         <th style="width:30px;">  Action</th>
@@ -51,18 +38,18 @@
                 <tbody>
                     @foreach($all_category_product as $key => $cate_pro)
                     <tr>
-                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                        <td>{{ $cate_pro->category_id }}</td>
                         <td>{{ $cate_pro->category_name }}</td>
                         <td><span class="text-ellipsis">
                                 <?php
                                 if ($cate_pro->category_status == 0) {
                                 ?>
-                                    <a href="{{URL::to('/active-category-product/'.$cate_pro->category_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>;
+                                    <a href="{{URL::to('/unactive-category-product/'.$cate_pro->category_id)}}"
+                                    onclick="return alert('Unactivated successfully')"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>;
                                 <?php
                                 } else {
                                 ?>
-                                    <a href="{{URL::to('/unactive-category-product/'.$cate_pro->category_id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>;
+                                    <a href="{{URL::to('/active-category-product/'.$cate_pro->category_id)}}"
+                                    onclick="return alert('Activated successfully')"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>;
                                 <?php }
                                 ?>
                             </span></td>

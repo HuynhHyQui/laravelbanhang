@@ -12,11 +12,21 @@ session_start();
 
 class AdminController extends Controller
 {
+    public function AuthLogin(){
+        $admin_id = session()->get('admin_id');
+        if($admin_id){
+            return Redirect::to('dashboard');
+        } else {
+            return Redirect::to('admin')->send();
+        }
+    }
+
     public function index(){
         return view('admin_login');
     }
 
     public function showdashboard(){
+        $this->AuthLogin();
         return view('admin.dashboard');
     }
 

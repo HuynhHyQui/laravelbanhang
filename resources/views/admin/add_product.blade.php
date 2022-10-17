@@ -61,16 +61,10 @@
                                 <option value="1">Hide</option>
                             </select>
                         </div>
-                        <button type="submit" name="add_product" class="btn btn-info">Add</button>
+                        <button type="submit" name="add_product" class="btn btn-info">Add</button onclick="return alert('Added successfully')">
                     </form>
                 </div>
-                <?php
-                $message = session()->get('message');
-                if ($message) {
-                    echo '<span class = "text-alert">' . $message . '</span>';
-                    session()->put('message', null);
-                }
-                ?>
+                
             </div>
         </section>
 
