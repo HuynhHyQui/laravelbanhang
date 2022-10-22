@@ -42,7 +42,7 @@
                             <label for="exampleInputFile">Category Product</label>
                             <select name="product_cate" class="form-control input-sm m-bot15">
                                 @foreach($cate_product as $key => $cate)
-                                @if($cate->category_id=$pro->category_id)
+                                @if($cate->category_id==$pro->category_id)
                                 <option selected value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                                 @else
                                 <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
@@ -55,20 +55,12 @@
                             <label for="exampleInputFile">Brand Product</label>
                             <select name="product_brand" class="form-control input-sm m-bot15">
                                 @foreach($brand_product as $key => $brand)
-                                @if($brand->brand_id=$pro->brand_id)
+                                @if($brand->brand_id==$pro->brand_id)
                                 <option selected value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
                                 @else
                                 <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
                                 @endif
                                 @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputFile">Display</label>
-                            <select name="product_status" class="form-control input-sm m-bot15">
-                                <option value="0">Display</option>
-                                <option value="1">Hide</option>
                             </select>
                         </div>
                         <button type="submit" onclick="return alert('Updated success')" name="update_product" class="btn btn-info">Update</button>

@@ -58,7 +58,7 @@
                                 <?php
                                 } else {
                                 ?>
-                                    <a href="{{URL::to('/Active-product/'.$pro->product_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down" 
+                                    <a href="{{URL::to('/active-product/'.$pro->product_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down" 
                                     onclick="return alert('activated successfully')"></span></a>;
                                 <?php }
                                 ?>
