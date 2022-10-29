@@ -5,9 +5,14 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">My Cart</li>
+                <li><a href="{{URL::to('/trang-chu')}}">Home</a></li>
+                <li class="active">Payment</li>
             </ol>
+        </div>
+        <!--/breadcrums-->
+
+        <div class="review-payment">
+            <h2>Review Cart</h2>
         </div>
         <div class="table-responsive cart_info" style="width: 80%;">
             <?php
@@ -63,38 +68,27 @@
                 </tbody>
             </table>
         </div>
+        <div class="review-payment">
+            <h2>Payment Cart</h2>
+        </div>
+        <br>
+        <form action="{{URL::to('/order-place')}}" method="POST">
+            {{ csrf_field() }}
+        <div class="payment-options">
+            <span>
+                <label><input type="checkbox" name="payment_option" value="1"> ATM Payment</label>
+            </span>
+            <span>
+                <label><input type="checkbox" name="payment_option" value="2"> Cash Payment</label>
+            </span>
+            <!--<span>
+                <label><input type="checkbox"> Paypal</label>
+            </span>-->
+            <input type="submit" value="Order" name="send_order" class="btn btn-primary btn-sm">
+        </div>
+        </form>
     </div>
 </section>
 <!--/#cart_items-->
-<section id="do_action">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9">
-                <div class="total_area">
-                    <ul>
-                        <li>Cart Sub Total <span>{{Cart::priceTotal(0).' '.'VND'}}</span></li>
-                        <li>Eco Tax <span>{{Cart::tax(0).' '.'VND'}}</span></li>
-                        <li>Shipping Cost <span>Free</span></li>
-                        <li>Total <span>{{Cart::total(0).' '.'VND'}}</span></li> 
-                    </ul>
-                    {{-- <a class="btn btn-default update" href="">Update</a> --}}
-                    <?php
-                    $customer_id = session()->get('customer_id');
-                    if ($customer_id != NULL) {
-                    ?>
-                        <a class="btn btn-default check_out" href="{{URL::to('/checkout')}}">Checkout</a>
-                    <?php
-                    } else {
-                    ?>
-                        <a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Checkout</a>
-                    <?php
-                    }
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--/#do_action-->
 
 @endsection

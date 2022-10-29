@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 //Frontend
 Route::get('/','HomeController@index');
 Route::get('/trang-chu','HomeController@index');
+Route::post('/search','HomeController@search');
 
 //Danh muc san pham trang chu
 Route::get('/danh-muc-san-pham/{category_id}','CategoryProduct@show_category_home');
@@ -76,5 +77,10 @@ Route::get('/delete-to-cart/{rowId}','CartController@delete_to_cart');
 
 //Check out
 Route::get('/login-checkout','CheckoutController@login_checkout');
+Route::get('/logout-checkout','CheckoutController@logout_checkout');
 Route::post('/add-customer','CheckoutController@add_customer');
+Route::post('/login-customer','CheckoutController@login_customer');
+Route::post('/order-place','CheckoutController@order_place');
 Route::get('/checkout','CheckoutController@checkout');
+Route::get('/payment','CheckoutController@payment');
+Route::post('/save-checkout-customer','CheckoutController@save_checkout_customer');
