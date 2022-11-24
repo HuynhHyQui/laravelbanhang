@@ -29,14 +29,6 @@
 <body>
 	<header id="header">
 		<!--header-->
-		<div class="header_top">
-			<!--header_top-->
-			<div class="container">
-				
-			</div>
-		</div>
-		<!--/header_top-->
-
 		<div class="header-middle">
 			<!--header-middle-->
 			<div class="container">
@@ -45,29 +37,6 @@
 						<div class="logo pull-left">
 							<a href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/frontend/images/logo1.png')}}" alt="" height="40px" width="85px"/></a>
 						</div>
-						<!--<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
-							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
-						</div>-->
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
@@ -116,7 +85,7 @@
 			<!--header-bottom-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-7">
+					<div class="col-sm-4">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>
@@ -126,21 +95,60 @@
 							</button>
 						</div>
 						<div class="mainmenu pull-left">
+						<div class="logo pull-left">
+							<a href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/frontend/images/logo1.png')}}" alt="" height="40px" width="50px"/></a>
+						</div>
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="{{URL::to('/trang-chu')}}" class="active">Home</a></li>
 								</li>
 								<li><a href="{{URL::to('/show-cart')}}">Cart</a></li>
+								<?php
+								$customer_id = session()->get('customer_id');
+								$shipping_id = session()->get('shipping_id');
+								if ($customer_id != NULL && $shipping_id == NULL) {
+								?>
+									<li><a href="{{URL::to('/checkout')}}"> Checkout</a></li>
+								<?php
+								} elseif ($customer_id != NULL && $shipping_id != NULL) {
+								?>
+									<li><a href="{{URL::to('/payment')}}"> Checkout</a></li>
+								<?php
+								} else {
+								?>
+									<li><a href="{{URL::to('/login-checkout')}}"> Checkout</a></li>
+								<?php
+								}
+								?>
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-8">
 						<form action="{{URL::to('/search')}}" method="POST">
 							{{csrf_field()}}
-							<div class="search_box pull-right">
-								<input type="text" name="keywords_submit" placeholder="Search" />
-								<input type="submit" name="search_items" style="margin-top: 0; color: #666;" class="btn btn-primary btn-sm" value="Search">
+							<div class="search_box pull-left">
+								<input type="text" name="keywords_submit" style="width: 400px;" placeholder="Search" />
+								<input type="submit" name="search_items" style="margin-top: 0; color: white;width: 100px;" class="btn btn-primary btn-sm" value="Search">
 							</div>
 						</form>
+						<div class="mainmenu pull-right">
+						<ul class="nav navbar-nav collapse navbar-collapse">
+						<?php
+								$customer_id = session()->get('customer_id');
+								$customer_name = session()->get('customer_name');
+								
+								if ($customer_id != NULL) {
+								?>
+									<li><a href="{{URL::to('/logout-checkout')}}"> Logout</a></li>
+								<?php
+								} else {
+								?>
+									<li><a href="{{URL::to('/login-checkout')}}"> Login</a></li>
+									<li><a href="{{URL::to('/login-checkout')}}"> Register</a></li>
+								<?php
+								}
+								?>
+						</ul>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -148,53 +156,6 @@
 		<!--/header-bottom-->
 	</header>
 	<!--/header-->
-
-	<section id="slider">
-		<!--slider-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#slider-carousel" data-slide-to="1"></li>
-							<li data-target="#slider-carousel" data-slide-to="2"></li>
-						</ol>
-						<style type="text/css">
-                            img.img.img-responsive.img-slider {
-                                height: 350px;
-                            }
-                        </style>
-						<div class="carousel-inner">
-							@php
-								$i = 0;
-							@endphp
-							@foreach($slider as $key => $slide)
-							@php
-								$i++;
-							@endphp
-							<div class="item {{$i==1 ? 'active' : '' }}">
-								<div class="col-sm-11">
-									<img src="{{asset('public/uploads/slider/'.$slide->slider_image)}}" class="girl img-responsive" alt="" height="200px" width="100%"/>
-								</div>
-							</div>
-							@endforeach
-						</div>
-
-						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-							<i class="fa fa-angle-left"></i>
-						</a>
-						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-							<i class="fa fa-angle-right"></i>
-						</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--/slider-->
-
 	<section>
 		<div class="container">
 			<div class="row">
@@ -224,22 +185,6 @@
 								</ul>
 							</div>
 						</div>
-						<!--/brands_products-->
-
-						<!-- <div class="price-range">
-							<h2>Price Range</h2>
-							<div class="well text-center">
-								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-								 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-							</div>
-						</div> -->
-
-						<!--<div class="shipping text-center">-->
-							<!--shipping
-							<img src="{{asset('public/frontend/images/shipping.jpg')}}" alt="" />
-						</div>-->
-						<!--/shipping-->
-
 					</div>
 				</div>
 

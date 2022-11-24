@@ -19,10 +19,6 @@
                             <label for="password_account">Password</label>
                             <input type="password" name="password_account" id="password_account" placeholder="Password">
                         </div>
-                        <span>
-                            <input type="checkbox" class="checkbox">
-                            Keep me signed in
-                        </span>
                         <button type="submit" class="btn btn-default">Sign in</button>
                     </form>
                     <br>
