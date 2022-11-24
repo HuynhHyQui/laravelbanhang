@@ -13,27 +13,27 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Product Name</label>
-                            <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" required="">
+                            <input type="text" data-validation="length" data-validation-length="min3"  name="product_name" class="form-control" id="exampleInputEmail1">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Product Description</label>
-                            <textarea style="resize: none;" rows="4" class="form-control" name="product_desc" id="exampleInputPassword1" required=""></textarea>
+                            <textarea style="resize: none;" rows="4" class="form-control" name="product_desc" id="ckeditor1" required=""></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Product Content</label>
-                            <textarea style="resize: none;" rows="4" class="form-control" name="product_content" id="exampleInputPassword1" required=""></textarea>
+                            <textarea style="resize: none;" rows="4" class="form-control" name="product_content" id="ckeditor2" required=""></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Product Image</label>
-                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1" required="">
+                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Product Price</label>
-                            <input type="text" name="product_price" class="form-control" id="exampleInputEmail1" required="">
+                            <input type="text" data-validation="number" name="product_price" class="form-control" id="exampleInputEmail1">
                         </div>
 
                         <div class="form-group">

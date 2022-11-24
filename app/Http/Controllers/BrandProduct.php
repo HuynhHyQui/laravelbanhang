@@ -6,6 +6,7 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use App\Slider;
 
 class BrandProduct extends Controller
 {
@@ -78,6 +79,7 @@ class BrandProduct extends Controller
     //End Function Admin Page
 
     public function show_brand_home($brand_id){
+        $slider = Slider::orderby('slider_id','DESC')->where('slider_status','0')->take(3)->get();
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')
         ->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')
@@ -91,6 +93,7 @@ class BrandProduct extends Controller
         ->with('category',$cate_product)
         ->with('brand',$brand_product)
         ->with('brand_by_id',$brand_by_id)
-        ->with('brand_name',$brand_name);
+        ->with('brand_name',$brand_name)
+        ->with('slider',$slider);
     }
 }

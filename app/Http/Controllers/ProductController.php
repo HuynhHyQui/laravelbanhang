@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\Console\Helper\Table;
+use App\Slider;
 session_start();
 
 class ProductController extends Controller
@@ -120,6 +121,8 @@ class ProductController extends Controller
     //End Function Admin Page
 
     public function details_product($product_id){
+        $slider = Slider::orderby('slider_id','DESC')->where('slider_status','0')->take(3)->get();
+        
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')
         ->orderby('category_id','desc')->get();
         
@@ -145,6 +148,7 @@ class ProductController extends Controller
         ->with('category',$cate_product)
         ->with('brand',$brand_product)
         ->with('product_details',$details_product)
-        ->with('relate',$related_product);
+        ->with('relate',$related_product)
+        ->with('slider',$slider);
     }
 }

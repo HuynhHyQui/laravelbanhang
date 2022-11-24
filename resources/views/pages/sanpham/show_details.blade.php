@@ -7,18 +7,18 @@
     <div class="col-sm-5">
         <div class="view-product">
             <img src="{{URL::to('/public/uploads/product/'.$value->product_image)}}" alt="" height="230" width="230"/>
-            <h3>ZOOM</h3>
+            <!--<h3>ZOOM</h3>-->
         </div>
         <div id="similar-product" class="carousel slide" data-ride="carousel">
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner">
+            <!--<div class="carousel-inner">
                 <div class="item active">
                     <a href=""><img src="{{URL::to('/public/frontend/images/similar1.jpg')}}" alt=""></a>
                     <a href=""><img src="{{URL::to('/public/frontend/images/similar2.jpg')}}" alt=""></a>
                     <a href=""><img src="{{URL::to('/public/frontend/images/similar3.jpg')}}" alt=""></a>
                 </div>
-            </div>
+            </div>-->
 
             <!-- Controls -->
             <a class="left item-control" href="#similar-product" data-slide="prev">
@@ -67,7 +67,7 @@
         <ul class="nav nav-tabs">
             <li class="active"><a href="#details" data-toggle="tab">Description</a></li>
             <li><a href="#companyprofile" data-toggle="tab">Content</a></li>
-            <li><a href="#reviews" data-toggle="tab">Reviews</a></li>
+            <!--<li><a href="#reviews" data-toggle="tab">Reviews</a></li>-->
         </ul>
     </div>
     <div class="tab-content">
@@ -79,7 +79,7 @@
             <p>{!!$value->product_content!!}</p>
         </div>
 
-        <div class="tab-pane fade" id="reviews">
+        <!--<div class="tab-pane fade" id="reviews">
             <div class="col-sm-12">
                 <ul>
                     <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
@@ -101,7 +101,7 @@
                     </button>
                 </form>
             </div>
-        </div>
+        </div>-->
 
     </div>
 </div>

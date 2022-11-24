@@ -12,11 +12,11 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Category Name</label>
-                            <input type="text" name="category_product_name" class="form-control" id="exampleInputEmail1" required="" >
+                            <input type="text" data-validation="length" data-validation-length="min1" name="category_product_name" class="form-control" id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Category Description</label>
-                            <textarea style="resize: none;" rows="8" class="form-control" name="category_product_desc" id="exampleInputPassword1" required=""></textarea>
+                            <textarea style="resize: none;" data-validation="length" data-validation-length="min3" rows="8" class="form-control" name="category_product_desc" id="exampleInputPassword1"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Display</label>

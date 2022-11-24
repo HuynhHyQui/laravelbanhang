@@ -19,12 +19,12 @@
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Product Description</label>
-                            <textarea style="resize: none;" rows="4" class="form-control" name="product_desc" id="exampleInputPassword1" required="">{{$pro->product_desc}}</textarea>
+                            <textarea style="resize: none;" rows="4" class="form-control" name="product_desc" id="ckeditor3" required="">{{$pro->product_desc}}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Product Content</label>
-                            <textarea style="resize: none;" rows="4" class="form-control" name="product_content" id="exampleInputPassword1" required="">{{$pro->product_content}}</textarea>
+                            <textarea style="resize: none;" rows="4" class="form-control" name="product_content" id="ckeditor4" required="">{{$pro->product_content}}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -61,6 +61,13 @@
                                 <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
                                 @endif
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Display</label>
+                            <select name="product_status" class="form-control input-sm m-bot15">
+                                <option value="0">Display</option>
+                                <option value="1">Hide</option>
                             </select>
                         </div>
                         <button type="submit" onclick="return alert('Updated success')" name="update_product" class="btn btn-info">Update</button>

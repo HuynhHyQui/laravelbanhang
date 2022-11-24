@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\Console\Helper\Table;
 use Cart;
+use App\Slider;
 use Gloudemans\Shoppingcart\Cart as ShoppingcartCart;
 
 session_start();
@@ -36,11 +37,13 @@ class CartController extends Controller
     }
 
     public function show_cart(){
+        $slider = Slider::orderby('slider_id','DESC')->where('slider_status','0')->take(3)->get();
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')
         ->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')
         ->orderby('brand_id','desc')->get();
-        return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product);
+        return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product)
+        ->with('slider',$slider);
     }
 
     public function delete_to_cart($rowId){

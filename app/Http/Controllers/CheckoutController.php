@@ -8,16 +8,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\Console\Helper\Table;
 use Cart;
+use App\Slider;
 session_start();
 
 class CheckoutController extends Controller
 {
     public function login_checkout(){
+        $slider = Slider::orderby('slider_id','DESC')->where('slider_status','0')->take(3)->get();
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')
         ->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')
         ->orderby('brand_id','desc')->get();
-        return view('pages.checkout.login_checkout')->with('category',$cate_product)->with('brand',$brand_product);
+        return view('pages.checkout.login_checkout')->with('category',$cate_product)
+        ->with('brand',$brand_product)->with('slider',$slider);
     }
 
     public function add_customer(Request $request){
@@ -33,11 +36,13 @@ class CheckoutController extends Controller
     }
 
     public function checkout(){
+        $slider = Slider::orderby('slider_id','DESC')->where('slider_status','0')->take(3)->get();
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')
         ->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')
         ->orderby('brand_id','desc')->get();
-        return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('brand',$brand_product);
+        return view('pages.checkout.show_checkout')->with('category',$cate_product)
+        ->with('brand',$brand_product)->with('slider',$slider);
     }
 
     public function save_checkout_customer(Request $request){
@@ -111,8 +116,9 @@ class CheckoutController extends Controller
         if($result){
             session()->put('customer_id',$result->customer_id);
             session()->put('customer_name', $request->customer_name);
-            return Redirect::to('/checkout');
+            return Redirect::to('/trang-chu');
         } else {
+            session()->put('message', 'Email or password incorrect');
             return Redirect::to('/login-checkout');
         }
     }
