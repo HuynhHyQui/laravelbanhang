@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-	<title>Admin Web</title>
+	<title>Register Authentication</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -33,19 +33,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 	<div class="log-w3">
 		<div class="w3layouts-main">
-			<h2>Sign In</h2>
-			<form action="{{URL::to('/admin-dashboard')}}" method="post">
+			<h2>Register</h2>
+			<form action="{{URL::to('/register')}}" method="post">
 				{{ csrf_field() }}
-				<input type="email" class="ggg" name="admin_email" placeholder="E-MAIL" required="">
+				<input type="text" class="ggg" name="admin_name" value="{{old('admin_name')}}" placeholder="NAME" required="">
+                <input type="email" class="ggg" name="admin_email" placeholder="E-MAIL" required="">
+                <input type="text" class="ggg" name="admin_phone" value="{{old('admin_phone')}}" placeholder="PHONE" required="">
 				<input type="password" class="ggg" name="admin_password" placeholder="PASSWORD" required="">
 
 				<span><input type="checkbox" />Remember Me</span>
 				<h6><a href="#">Forgot Password?</a></h6>
 				<div class="clearfix"></div>
-				<input type="submit" value="Sign In" name="login">
+				<input type="submit" value="Register" name="login">
 			</form>
 			<!-- <p>Don't Have an Account ?<a href="registration.html">Create an account</a></p> -->
-			<a href="{{url('/register_auth')}}">Register Authentication</a>
+			<a href="{{url('/register-auth')}}">Register Authentication</a>
 			<a href="{{url('/login-auth')}}">Login Authentication</a>
 			<?php
 			$message = session()->get('message');

@@ -89,3 +89,7 @@ Route::post('/save-checkout-customer','CheckoutController@save_checkout_customer
 Route::get('/manage-order','CheckoutController@manage_order');
 Route::get('/view-order/{orderId}','CheckoutController@view_order');
 Route::get('/delete-order','CheckoutController@delete_order');
+
+//Authentication
+Route::get('/register_auth','AuthController@register_auth');
+Route::post('/register','AuthController@register');
