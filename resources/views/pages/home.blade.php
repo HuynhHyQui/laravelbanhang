@@ -13,7 +13,7 @@
                     <img src="{{URL::to('public/uploads/product/'.$product->product_image)}}" alt="" height="230" width="230"/>
                     <h2>{{number_format($product->product_price).' VND'}}</h2>
                     <p>{{$product->product_name}}</p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                    <a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                 </div>
                 <!--<div class="product-overlay">
                     <div class="overlay-content">
@@ -23,17 +23,21 @@
                     </div>
                 </div>-->
             </div>
-            <div class="choose">
+            <!--<div class="choose">
                 <ul class="nav nav-pills nav-justified">
                     <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
                     <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
                 </ul>
-            </div>
+            </div>-->
         </div>
     </div>
     </a>
+    
     @endforeach
 </div>
+                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                       {!!$all_product->links()!!}
+                      </ul>
 <!--features_items-->
 <!--<div class="category-tab"> 
     <div class="col-sm-12">

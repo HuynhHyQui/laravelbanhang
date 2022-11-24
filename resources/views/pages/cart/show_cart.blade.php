@@ -5,7 +5,7 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{URL::to('/trang-chu')}}">Home</a></li>
                 <li class="active">My Cart</li>
             </ol>
         </div>
@@ -32,7 +32,7 @@
                         </td>
                         <td class="cart_description">
                             <h4><a href="">{{$v_content->name}}</a></h4>
-                            <p>Web ID: {{$v_content->id}}</p>
+                            <p>Product ID: {{$v_content->id}}</p>
                         </td>
                         <td class="cart_price">
                             <p>{{number_format($v_content->price).' VND'}}</p>
@@ -41,7 +41,7 @@
                             <div class="cart_quantity_button">
                                 <form action="{{URL::to('/update-cart-quantity')}}" method="POST">
                                     {{ csrf_field() }}
-                                <input class="cart_quantity_input" type="text" name="cart_quantity" value="{{$v_content->qty}}" autocomplete="off" size="2">
+                                <input class="cart_quantity_input" type="number" name="cart_quantity" value="{{$v_content->qty}}" autocomplete="off" size="2">
                                 <input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="btn btn-default btn-sm">
                                 <input type="submit" value="Update" name="update_qty" class="btn btn-default btn-sm">
                                 </form>

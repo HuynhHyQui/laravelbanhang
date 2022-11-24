@@ -32,7 +32,7 @@ class CheckoutController extends Controller
         $customer_id = DB::table('tbl_customer')->insertGetId($data);
         session()->put('customer_id',$customer_id);
         session()->put('customer_name', $request->customer_name);
-        return Redirect::to('/checkout');
+        return Redirect::to('/trang-chu');
     }
 
     public function checkout(){
@@ -58,11 +58,12 @@ class CheckoutController extends Controller
     }
 
     public function payment(){
+        $slider = Slider::orderby('slider_id','DESC')->where('slider_status','0')->take(3)->get();
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')
         ->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')
         ->orderby('brand_id','desc')->get();
-        return view('pages.checkout.payment')->with('category',$cate_product)->with('brand',$brand_product);
+        return view('pages.checkout.payment')->with('category',$cate_product)->with('brand',$brand_product)->with('slider',$slider);
     }
 
     public function order_place(Request $request){
@@ -96,11 +97,13 @@ class CheckoutController extends Controller
             echo 'ATM';
         } else {
             Cart::destroy();
+            $slider = Slider::orderby('slider_id','DESC')->where('slider_status','0')->take(3)->get();
             $cate_product = DB::table('tbl_category_product')->where('category_status','0')
             ->orderby('category_id','desc')->get();
             $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')
             ->orderby('brand_id','desc')->get();
-            return view('pages.checkout.handcash')->with('category',$cate_product)->with('brand',$brand_product);
+            return view('pages.checkout.handcash')->with('category',$cate_product)
+            ->with('brand',$brand_product)->with('slider',$slider);
         }
     }
 
