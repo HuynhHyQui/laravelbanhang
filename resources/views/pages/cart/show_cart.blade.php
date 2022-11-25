@@ -32,7 +32,7 @@
                         </td>
                         <td class="cart_description">
                             <h4><a href="">{{$v_content->name}}</a></h4>
-                            <p>Product ID: {{$v_content->id}}</p>
+                            <br>
                         </td>
                         <td class="cart_price">
                             <p>{{number_format($v_content->price).' VND'}}</p>
@@ -41,7 +41,7 @@
                             <div class="cart_quantity_button">
                                 <form action="{{URL::to('/update-cart-quantity')}}" method="POST">
                                     {{ csrf_field() }}
-                                <input class="cart_quantity_input" type="number" name="cart_quantity" value="{{$v_content->qty}}" autocomplete="off" size="2">
+                                <input class="cart_quantity_input" type="number" style="width: 50px;" name="cart_quantity" value="{{$v_content->qty}}" autocomplete="off" size="2">
                                 <input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="btn btn-default btn-sm">
                                 <input type="submit" value="Update" name="update_qty" class="btn btn-default btn-sm">
                                 </form>
@@ -86,7 +86,7 @@
                     <?php
                     } else {
                     ?>
-                        <a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Checkout</a>
+                        <a class="btn btn-default check_out" href="{{URL::to('/login')}}">Checkout</a>
                     <?php
                     }
                     ?>

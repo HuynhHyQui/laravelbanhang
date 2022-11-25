@@ -81,10 +81,8 @@
             <span>
                 <label><input type="checkbox" name="payment_option" value="2"> Cash Payment</label>
             </span>
-            <!--<span>
-                <label><input type="checkbox"> Paypal</label>
-            </span>-->
-            <input type="submit" value="Order" name="send_order" class="btn btn-primary btn-sm">
+            <br>
+            <input type="submit" value="Order" name="send_order" class="btn btn-primary btn-lg">
         </div>
         </form>
     </div>

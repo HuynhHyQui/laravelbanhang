@@ -14,75 +14,16 @@
 	<link href="{{asset('public/frontend/css/animate.css')}}" rel="stylesheet">
 	<link href="{{asset('public/frontend/css/main.css')}}" rel="stylesheet">
 	<link href="{{asset('public/frontend/css/responsive.css')}}" rel="stylesheet">
-	<!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
 	<link rel="shortcut icon" href="{{('public/frontend/images/favicon.ico')}}">
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head>
-<!--/head-->
 
 <body>
 	<header id="header">
-		<!--header-->
-		<div class="header-middle">
-			<!--header-middle-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="logo pull-left">
-							<a href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/frontend/images/logo1.png')}}" alt="" height="40px" width="85px"/></a>
-						</div>
-					</div>
-					<div class="col-sm-8">
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
-								<?php
-								$customer_id = session()->get('customer_id');
-								$shipping_id = session()->get('shipping_id');
-								if ($customer_id != NULL && $shipping_id == NULL) {
-								?>
-									<li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<?php
-								} elseif ($customer_id != NULL && $shipping_id != NULL) {
-								?>
-									<li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<?php
-								} else {
-								?>
-									<li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Checkout</a></li>
-								<?php
-								}
-								?>
-								<li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<?php
-								$customer_id = session()->get('customer_id');
-								$customer_name = session()->get('customer_name');
-								if ($customer_id != NULL) {
-								?>
-									<li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Logout</a></li>
-								<?php
-								} else {
-								?>
-									<li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Login</a></li>
-								<?php
-								}
-								?>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/header-middle-->
-
 		<div class="header-bottom">
-			<!--header-bottom-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
@@ -99,12 +40,13 @@
 							<a href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/frontend/images/logo1.png')}}" alt="" height="40px" width="50px"/></a>
 						</div>
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="{{URL::to('/trang-chu')}}" class="active">Home</a></li>
+								<li><a href="{{URL::to('/trang-chu')}}">Home</a></li>
 								</li>
 								<li><a href="{{URL::to('/show-cart')}}">Cart</a></li>
 								<?php
 								$customer_id = session()->get('customer_id');
 								$shipping_id = session()->get('shipping_id');
+								$customer_name = session()->get('customer_name');
 								if ($customer_id != NULL && $shipping_id == NULL) {
 								?>
 									<li><a href="{{URL::to('/checkout')}}"> Checkout</a></li>
@@ -115,7 +57,7 @@
 								<?php
 								} else {
 								?>
-									<li><a href="{{URL::to('/login-checkout')}}"> Checkout</a></li>
+									<li><a href="{{URL::to('/login')}}"> Checkout</a></li>
 								<?php
 								}
 								?>
@@ -134,16 +76,16 @@
 						<ul class="nav navbar-nav collapse navbar-collapse">
 						<?php
 								$customer_id = session()->get('customer_id');
-								$customer_name = session()->get('customer_name');
 								
 								if ($customer_id != NULL) {
 								?>
+									<li><a href="#"> {{$customer_name}} </a></li>
 									<li><a href="{{URL::to('/logout-checkout')}}"> Logout</a></li>
 								<?php
 								} else {
 								?>
-									<li><a href="{{URL::to('/login-checkout')}}"> Login</a></li>
-									<li><a href="{{URL::to('/login-checkout')}}"> Register</a></li>
+									<li><a href="{{URL::to('/login')}}"> Login</a></li>
+									<li><a href="{{URL::to('/register')}}"> Register</a></li>
 								<?php
 								}
 								?>
@@ -153,15 +95,13 @@
 				</div>
 			</div>
 		</div>
-		<!--/header-bottom-->
 	</header>
-	<!--/header-->
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Category</h2>
+						<h2 style="color: black;">Category</h2>
 						<div class="panel-group category-products" id="accordian">
 							<!--category-productsr-->
 							@foreach($category as $key => $cate)
@@ -173,10 +113,9 @@
 							@endforeach
 						</div>
 						<!--/category-products-->
-
 						<div class="brands_products">
 							<!--brands_products-->
-							<h2>Brands</h2>
+							<h2 style="color: black;">Brands</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
 									@foreach($brand as $key => $brand)
@@ -195,8 +134,8 @@
 		</div>
 	</section>
 
-	<footer id="footer">
-		<!--Footer-->
+	<!--<footer id="footer">
+		Footer
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
@@ -241,7 +180,7 @@
 				</div>
 			</div>
 		</div>
-	</footer>
+	</footer>-->
 	<!--/Footer-->
 
 	<script src="{{asset('public/frontend/js/jquery.js')}}"></script>

@@ -97,3 +97,7 @@ Route::post('/save-banner','SliderController@save_banner');
 Route::get('/unactive-slide/{slide_id}','SliderController@unactive_slide');
 Route::get('/active-slide/{slide_id}','SliderController@active_slide');
 Route::get('/delete-slide/{slide_id}','SliderController@delete_slide');
+
+//Login
+Route::get('/login','CheckoutController@login');
+Route::get('/register','CheckoutController@register');

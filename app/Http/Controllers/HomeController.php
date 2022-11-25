@@ -28,7 +28,7 @@ class HomeController extends Controller
         ->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')
         ->orderby('brand_id','desc')->get();
-        $search_product = DB::table('tbl_product')->where('product_name','like','%'.$keywords.'%')->get();
+        $search_product = DB::table('tbl_product')->where('product_name','like','%'.$keywords.'%')->limit(6)->paginate(6);
         return view('pages.sanpham.search')->with('category',$cate_product)->with('brand',$brand_product)
         ->with('search_product',$search_product)->with('slider',$slider);
     }

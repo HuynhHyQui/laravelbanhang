@@ -10,17 +10,13 @@
             </ol>
         </div>
         <!--/breadcrums-->
-
-        <div class="register-req">
-            <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
-        </div>
         <!--/register-req-->
 
         <div class="shopper-informations">
             <div class="row">  
                 <div class="col-sm-12 clearfix">
                     <div class="bill-to">
-                        <p>Bill To</p>
+                        <p>Reciever Information</p>
                         <div class="form-one">
                             <form action="{{URL::to('/save-checkout-customer')}}" method="POST">
                                 {{csrf_field()}}

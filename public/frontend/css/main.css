@@ -1113,8 +1113,8 @@ h2.title {
 }
 
 .pagination  .active  a, .pagination  .active  span, .pagination  .active  a:hover, .pagination  .active  span:hover, .pagination  .active  a:focus, .pagination  .active  span:focus {
-  background-color: #5426e8;
-  border-color: #5426e8;
+  background-color: black;
+  border-color: black;
   color: #FFFFFF;
   cursor: default;
   z-index: 2;
@@ -1134,7 +1134,7 @@ h2.title {
 }
 
 .pagination  li  a:hover{
-	background:#5426e8;
+	background:black;
 	color:#fff;
 }
 
@@ -1707,8 +1707,7 @@ h2.title {
 }
 
 .total_area ul li {
-  background:#E6E4DF;
-  color: #696763;
+
   margin-top: 10px;
   padding: 7px 20px;
 }
@@ -1758,7 +1757,7 @@ h2.title {
   border:0;
   color: #696763;
   padding: 5px;
-  width: 100%;
+  width: 150%;
   border-radius: 0;
   resize: none
 }
@@ -1901,13 +1900,21 @@ h2.title {
 
 .shopper-info > form > input, 
 .form-two > form > select, 
-.form-two > form > input, 
-.form-one > form > input {
+.form-two > form > input {
   background:#F0F0E9;
   border: 0 none;
   margin-bottom:10px;
   padding: 10px;
   width: 100%;
+  font-weight: 300
+}
+
+.form-one > form > input {
+  background:#F0F0E9;
+  border: 0 none;
+  margin-bottom:10px;
+  padding: 10px;
+  width: 150%;
   font-weight: 300
 }
 
@@ -2107,7 +2114,7 @@ h2.title {
 .pagination li a:hover,
 .pagination-area 
 .pagination li .active {
-  background:#5426e8;
+  background:black;
   color: #fff
 }
 

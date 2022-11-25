@@ -13,14 +13,21 @@ session_start();
 
 class CheckoutController extends Controller
 {
+    public function login(){
+        return view('pages.checkout.login');
+    }
+    public function register(){
+        return view('pages.checkout.register');
+    }
     public function login_checkout(){
         $slider = Slider::orderby('slider_id','DESC')->where('slider_status','0')->take(3)->get();
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')
         ->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')
         ->orderby('brand_id','desc')->get();
-        return view('pages.checkout.login_checkout')->with('category',$cate_product)
-        ->with('brand',$brand_product)->with('slider',$slider);
+        // return view('pages.checkout.login_checkout')->with('category',$cate_product)
+        // ->with('brand',$brand_product)->with('slider',$slider);
+        return Redirect::to('/');
     }
 
     public function add_customer(Request $request){
@@ -118,11 +125,11 @@ class CheckoutController extends Controller
         $result = DB::table('tbl_customer')->where('customer_email',$email)->where('customer_password',$password)->first();
         if($result){
             session()->put('customer_id',$result->customer_id);
-            session()->put('customer_name', $request->customer_name);
+            session()->put('customer_name',$result->customer_name);
             return Redirect::to('/trang-chu');
         } else {
             session()->put('message', 'Email or password incorrect');
-            return Redirect::to('/login-checkout');
+            return Redirect::to('/login');
         }
     }
 
