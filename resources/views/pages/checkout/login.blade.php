@@ -29,6 +29,7 @@
                         </div>
                         <button type="submit" class="btn btn-default">Sign in</button>
                         <a href="{{URL::to('/register')}}" class='btn btn-primary' style="width:91px;">Register</a>
+                        <a href="{{URL::to('/')}}" class='btn btn-primary' style="width:97px;">Cancel</a>
                     </form>
                     <br>
                     <?php

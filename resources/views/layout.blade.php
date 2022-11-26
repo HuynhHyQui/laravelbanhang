@@ -36,10 +36,10 @@
 							</button>
 						</div>
 						<div class="mainmenu pull-left">
-						<div class="logo pull-left">
-							<a href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/frontend/images/logo1.png')}}" alt="" height="40px" width="50px"/></a>
-						</div>
-							<ul class="nav navbar-nav collapse navbar-collapse">
+							<div class="logo pull-left">
+								<a href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/frontend/images/logodt.png')}}" style="margin-right: 5px;" alt="" height="40px" width="40px" /></a>
+							</div>
+							<ul class="nav navbar-nav collapse navbar-collapse" style="fon">
 								<li><a href="{{URL::to('/trang-chu')}}">Home</a></li>
 								</li>
 								<li><a href="{{URL::to('/show-cart')}}">Cart</a></li>
@@ -73,14 +73,15 @@
 							</div>
 						</form>
 						<div class="mainmenu pull-right">
-						<ul class="nav navbar-nav collapse navbar-collapse">
-						<?php
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<?php
 								$customer_id = session()->get('customer_id');
-								
+
 								if ($customer_id != NULL) {
 								?>
-									<li><a href="#"> {{$customer_name}} </a></li>
+									<li><a href="#"><img src="{{asset('public/frontend/images/profile.png')}}" alt="" height="25px" width="25px" /> {{$customer_name}} </a></li>
 									<li><a href="{{URL::to('/logout-checkout')}}"> Logout</a></li>
+
 								<?php
 								} else {
 								?>
@@ -89,7 +90,7 @@
 								<?php
 								}
 								?>
-						</ul>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -103,7 +104,6 @@
 					<div class="left-sidebar">
 						<h2 style="color: black;">Category</h2>
 						<div class="panel-group category-products" id="accordian">
-							<!--category-productsr-->
 							@foreach($category as $key => $cate)
 							<div class="panel panel-default">
 								<div class="panel-heading">
@@ -112,9 +112,7 @@
 							</div>
 							@endforeach
 						</div>
-						<!--/category-products-->
 						<div class="brands_products">
-							<!--brands_products-->
 							<h2 style="color: black;">Brands</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
@@ -134,67 +132,13 @@
 		</div>
 	</section>
 
-	<!--<footer id="footer">
-		Footer
-		<div class="footer-widget">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-3">
-						<div class="single-widget">
-							<h2>Service</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Online Help</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Order Status</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="single-widget">
-							<h2>Quick Shop</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Smart Phone</a></li>
-								<li><a href="#">Laptop</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="single-widget">
-							<h2>Policies</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Terms of Use</a></li>
-								<li><a href="#">Privecy Policy</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="single-widget">
-							<h2>About</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Company Information</a></li>								
-								<li><a href="#">Store Location</a></li>								
-								<li><a href="#">Copyright</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>-->
-	<!--/Footer-->
-
 	<script src="{{asset('public/frontend/js/jquery.js')}}"></script>
 	<script src="{{asset('public/frontend/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('public/frontend/js/jquery.scrollUp.min.js')}}"></script>
 	<script src="{{asset('public/frontend/js/price-range.js')}}"></script>
 	<script src="{{asset('public/frontend/js/jquery.prettyPhoto.js')}}"></script>
 	<script src="{{asset('public/frontend/js/main.js')}}"></script>
-	<!--<script src="{{asset('public/frontend/js/jquery.form-validator.min.js')}}"></script>
-	<script type="text/javascript">
-		$.validate({
 
-		});
-	</script>-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 	<script>

@@ -4,7 +4,7 @@
 @foreach($product_details as $key => $value)
 <div class="product-details">
     <!--product-details-->
-    <div class="col-sm-5">
+    <div class="col-sm-6">
         <div class="view-product">
             <img src="{{URL::to('/public/uploads/product/'.$value->product_image)}}" alt="" height="230" width="230"/>
             <!--<h3>ZOOM</h3>-->
@@ -30,7 +30,7 @@
         </div>
 
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-6">
         <div class="product-information">
             <!--/product-information-->
             <img src="images/product-details/new.jpg" class="newarrival" alt="" />

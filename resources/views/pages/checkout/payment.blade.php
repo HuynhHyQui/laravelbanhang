@@ -53,7 +53,7 @@
                             </div>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price">
+                            <p class="cart_total_price" style="color: red;">
                                 <?php
                                 $subtotal = $v_content->price * $v_content->qty;
                                 echo number_format($subtotal) . ' ' . 'VND';
